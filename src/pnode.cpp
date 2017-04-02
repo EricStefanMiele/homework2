@@ -16,8 +16,8 @@ void callback(const sensor_msgs::LaserScan::ConstPtr& input, ros::Publisher pub)
 		tf::Vector3 coordinates = transform.getOrigin();
 		
 		float x = coordinates.getX();
-		float y = coordinates.getX();
-		float z = coordinates.getX();
+		float y = coordinates.getY();
+		float z = coordinates.getZ();
 		
 		std_msgs::String output;
 	
