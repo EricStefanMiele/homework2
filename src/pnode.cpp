@@ -29,10 +29,7 @@ void callback(const sensor_msgs::LaserScan::ConstPtr& input, ros::Publisher pub,
 	
 		std::stringstream ss;
 		
-		ss << "Timestamp: " << stamp << " - ";
-		ss << "X: " << x << " - ";
-		ss << "Y: " << y << " - ";
-		ss << "Theta: " << theta;
+		ss << "LASER " << stamp << " (" << x << "," << y << "," << theta << ")";
 		
 		output.data = ss.str();
 		
