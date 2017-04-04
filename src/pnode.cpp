@@ -7,7 +7,7 @@ void callback(const sensor_msgs::LaserScan::ConstPtr& input, ros::Publisher pub,
 	
 	tf::StampedTransform transform;
 	
-	ros::Time stamp = (input->header).stamp;
+	ros::Time stamp = ros::Time::now();
 	
 	if(listener->canTransform("/odom", "/base_laser_link", stamp, NULL)){
 	
@@ -29,13 +29,15 @@ void callback(const sensor_msgs::LaserScan::ConstPtr& input, ros::Publisher pub,
 	
 		std::stringstream ss;
 		
-		ss << "LASER " << stamp << " (" << x << "," << y << "," << theta << ")";
+		ss << "LASER " << transform.stamp_ << " (" << x << "," << y << "," << theta << ")";
 		
 		output.data = ss.str();
 		
 		//printf("%s\n",output.data.c_str());
 		
 		pub.publish(output);
+		
+		printf("Got transformation\n");
 
 		ros::spinOnce();
 	}
